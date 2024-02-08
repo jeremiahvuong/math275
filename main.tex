@@ -1,0 +1,76 @@
+\documentclass{article}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Math 275} Notes}
+\author{\huge{Jeremiah Vuong}\\Los Angeles Valley College\\vuongjn5900@student.laccd.edu
+}
+\date{2024 Spring}
+
+\begin{document}
+\maketitle
+\newpage
+
+\pagebreak
+
+\section{1}
+\subsection{Slope (Direction) Fields}
+Equations containing derivatives are differential equations. \\
+A differential equation that describes some physical process is often called a mathematical model of the process.
+\dfn{Slope (direction) field}{
+  Given the differential equation $d y / d t=f(t, y)$. If we systematically evaluate $f$ over a rectangular grid of points in the ty-plane and draw a line element at each point $(t, y)$ of the grid with slope $f(t, y)$, then the collection of all these line elements is called a slope (direction) field of the differential equation $d y / d t=f(t, y)$
+} \noindent
+We can graph undefined slopes in a slope field by using a vertical line; horizontal for 0.
+\qs{pg. 8: \#6}{
+  Write down a differential equation of the form $\mathrm{dy} / \mathrm{dt}=\mathrm{ay}+\mathrm{b}$ whose solutions diverge from $\mathrm{y}=2$.
+}
+\sol \\
+Given that the equation is dependent on just $y$, we can say that it is an autonomous differential equation (DE).
+We can subsequently solve for the DE by setting $\frac{dy}{dt} = f(y) = 0$, such that its solution is its equilibrium solution.
+Since $y=2$, $\boxed{\frac{dy}{dt} = y-2}$. Thus, any number that is less than 2 will result in the solution's phase portrait diverging (-) from $y=2$ --- vice versa for numbers greater than 2.
+\subsection{tfi}
+\subsection{Classification on DEs}
+The order of a DE is the order of the highest derivative that appears in the equation.
+\dfn{Linear ODE}{The ODE $F\left(t, y, y^{\prime}, \ldots, y^{(n)}\right)=0$ is said to be linear if $F$ is a linear function of the variables $y, y^{\prime}, \ldots, y^{(n)}$. Thus the general linear ODE of order $n$ is $a_0(t) y^{(n)}+a_1(t) y^{(n-1)}+\ldots+a_n(t) y=g(t)$.}
+\qs{pg. 22}{
+  Determine the order of the given DE; also state whether the equation is linear or nonlinear: \\
+  1) $t^2 y^{\prime \prime}+t y^{\prime}+2 y=\sin t$ \\
+  2) $\left(1+y^2\right) y^{\prime \prime}+t y^{\prime}+y=e^t$
+}
+\sol \\ 
+1) The order of the DE is 2, and it is linear: noticed how all the coefficents of n derivatives of $y$ are functions of $t$. \\
+2) The order of the DE is 2, and it is nonlinear: noticed how the coefficents of n derivatives of $y$ are functions of $t$ and $y$.
+
+\dfn{Nth-order IDE solutions}{Any function $h$, defined on an interval and possessing at least $n$ derivatives that are continuous on this interval, which substituted into an nth-order ODE reduces the equation to an identity, is said to be a solution of the equation on the interval.}
+\qs{pg. 22: \#9)}{
+  Verify that the functions $y_1(t)=t^{-2}$ and $y_2(t)=t^{-2} \ln t$ are solutions of the DE
+$$ t^2 y^{\prime \prime}+5 t y^{\prime}+4 y=0 $$
+}
+\sol \\
+We can verify that $y_1(t)$ and $y_2(t)$ are solutions of the DE by substituting them into the DE and verifying that the equation holds true. \\
+\begin{align*}
+  y_1 &= t^{-2} \\
+  y_1^{\prime} &= -2t^{-3} \\
+  y_1^{\prime \prime} &= 6t^{-4} \\
+\end{align*}
+Substituting: $t^2 y^{\prime \prime}+5 t y^{\prime}+4 y  = t^2(6t^{-4})+5t(-2t^{-3})+4t^{-2} = 0$ \\
+For homework 1, we can verify that $y_2(t)$ is a solution of the DE.
+
+\qs{\#12}{
+  Determine the values of $r$ for which $y^{\prime \prime}+y^{\prime}-6 y=0$ has solutions of the form $y=e^{r t}$
+}
+\sol \\
+We can solve for the values of $r$ by substituting $y=e^{rt}$ into the DE and solving for $r$.
+$y=e^{rt}$, $y^{\prime}=re^{rt}$, and $y^{\prime \prime}=r^2e^{rt}$. Substituting: $r^2e^{rt}+re^{rt}-6e^{rt}=0$.
+Factoring out $e^{rt}$, we get $e^{rt}(r^2+r-6)=0$. Thus, $r^2+r-6=0$, and $\boxed{r=2, -3}$.
+
+\qs{\#14} {
+  Determine the values of $r$ for which $t^2 y^{\prime \prime}+4 t y^{\prime}+2 y=0$ has solutions of the form $y=t^r$ for $t>0$
+}
+\sol \\
+$y=t^r$, $y^{\prime}=rt^{r-1}$, and $y^{\prime \prime}=r(r-1)t^{r-2}$.
+Substituting: $t^2(r(r-1)t^{r-2})+4t(rt^{r-1})+2t^r=0$.
+Factoring out $t^r$, we get $t^r[r(r-1)+4r+2]=0$. $t > 0$ such that $t^r \neq 0$, and $r(r-1)+4r+2=0$. Thus, $r^2+3r+2=0$, and $\boxed{r=-1, -2}$.
+\end{document}

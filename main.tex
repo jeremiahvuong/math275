@@ -73,4 +73,104 @@ Factoring out $e^{rt}$, we get $e^{rt}(r^2+r-6)=0$. Thus, $r^2+r-6=0$, and $\box
 $y=t^r$, $y^{\prime}=rt^{r-1}$, and $y^{\prime \prime}=r(r-1)t^{r-2}$.
 Substituting: $t^2(r(r-1)t^{r-2})+4t(rt^{r-1})+2t^r=0$.
 Factoring out $t^r$, we get $t^r[r(r-1)+4r+2]=0$. $t > 0$ such that $t^r \neq 0$, and $r(r-1)+4r+2=0$. Thus, $r^2+3r+2=0$, and $\boxed{r=-1, -2}$.
+\section{tfi}
+\subsection{Linear DEs}
+\dfn{First-order linear DE}{
+  An ODE of the form $d y / d t+p(t) y=g(t)$ is called a first-order linear differential equation in standard form
+}
+\ex{Solving a Linear First-Order DE}{
+  i) Put the linear equation in standard form. \\
+  ii) From the standard form of the equation identify $\mathrm{p}(\mathrm{t})$ and then find the integrating factor $e^{\int p(t) d t}$. No constant need be used in evaluating the indefinite integral in the exponent. \\
+  iii) Multiply both sides of the standard form equation by the integrating factor. The left-hand side of the resulting equation is automatically the derivative of the product of the integrating factor and $\mathrm{y}: \quad \frac{d}{d t}\left[e^{\int p(t) d t} y\right]=e^{\int p(t) d t} g(t)$. \\
+  iv) Integrate both sides of the last equation and solve for $y$
+}
+\subsection{Separable DEs}
+\dfn{Seperable DE}{
+  An ODE written in the differential form $M(x) d x+N(y) d y=0$ is said to be separable since terms involving each variable may be placed on opposite sides of the equation. A separable equation can be solved by integrating the functions $M$ and $N$.
+}
+\qs{pg. 38: \#4)}{
+  Solve the DE:$\quad x y^{\prime}=\left(1-y^2\right)^{1 / 2}$
+}
+\sol \\
+We can rewrite the DE as $x \frac{dy}{dx} = \sqrt{1-y^2}$,
+we can then seperate the variables and integrate both sides.
+$ x dy = \sqrt{1-y^2} dx \implies \int dy \frac{1}{\sqrt{1-y^2}} = \int dx \frac{1}{x}$.
+Such that, $\arcsin(y) = \ln|x|+C$. Thus, $\boxed{y=\sin(\ln|x|+C)}$, we call this the general solution.
+
+\dfn{General Order n-th ODE}{
+  Trying to solve the ODE $\frac{d^n y}{d x^n}=f\left(x, y, y^{\prime}, \ldots, y^{(n-1)}\right)$ subject to the conditions $\quad y\left(x_0\right)=y_0, y^{\prime}\left(x_0\right)=y_1, \ldots, y^{(n-1)}\left(x_0\right)=y_{n-1}$, where $\mathrm{y}_0, \mathrm{y}_1, \ldots, \mathrm{y}_{\mathrm{n}-1}$ are arbitrary real constants, is called an nth-order initial-value problem $(I V P)$. The values of $\mathrm{y}(\mathrm{x})$ and its first $\mathrm{n}-1$ derivatives at $\mathrm{x}_0$ are called initial conditions (IC).
+}
+
+\qs{pg. 38: \#16)}{
+  Find the solution of the initial value problem $\sin (2 x) d x+\cos (3 y) d y=0, \quad y\left(\frac{\pi}{2}\right)=\frac{\pi}{3}$ in explicit form.
+}
+\sol \\
+We can solve the DE by seperating the variables and integrating both sides.
+$\sin(2x)dx = -\cos(3y)dy \implies \int \sin(2x)dx = -\int \cos(3y)dy$.
+Such that, $-\frac{1}{2}\cos(2x) = -\frac{1}{3}\sin(3y) + C$.
+We can solve for $C$ by using the initial condition $y(\frac{\pi}{2}) = \frac{\pi}{3}$.
+$-\frac{1}{2}\cos(\pi) = -\frac{1}{3}\sin(\pi) + C \implies C = \frac{1}{2}$.
+Thus, $-\frac{1}{2} \cos(2x) = \frac{1}{3}\sin(3y) + \frac{1}{2}$.
+\begin{align*}
+  6[-\frac{1}{2} \cos(2x)] &= 6[-\frac{1}{3}\sin(3y) + \frac{1}{2}] \\
+  -3\cos(2x) &= 2\sin(3y) + 3 \\
+  -3-3cos(2x) &= -2\sin(3y) \\
+  (3\cos(2x)+3) \cdot \frac{1}{2} &= \sin(3y) \\
+  \Aboxed{y &= \frac{1}{3} \cdot \arcsin(\frac{3+3\cos(2x)}{2})}
+\end{align*}
+
+\dfn{Homogeneous DEs}{
+  A first-order DE in differential form $M(x, y) d x+N(x, y) d y=0$ is said to be homogeneous if both coefficient functions $M$ and $N$ have the same degree.
+}
+\noindent
+Either of the substitutions $y=u x$ or $x=v y$, where $u$ and $v$ are new dependent variables, will reduce a homogeneous equation to a separable first-order differential equation.
+\double
+Although either of the indicated substitutions can be used for every homogeneous differential equation, in practice we try $x=v y$ whenever the function $M$ is simpler than $N$, and $y=u x$ whenever $N$ is simpler than $M$.
+
+
+\qs{pg. 39: \#26)}{
+  Solve: $$\frac{d y}{d x}=\frac{x^2+x y+y^2}{x^2}$$
+}
+\sol \\
+Seperating the differential, $x^2 dy = (x^2+xy+y^2)dx \implies 0 = (x^2 + xy+ y^2) dx - x^2 dy$.
+Let $y=ux$, such that $dy = udx + xdu$. Where $0 = (x^2 + x(ux) + (ux)^2)dx - x^2(udx + xdu)$.
+Distributing,
+\begin{align*}
+0 &= x^2 dx + ux^2 dx + u^2x^2 dx - ux^2dx - x^3 du \\
+x^3 du &= x^2 dx + u^2x^2 dx \\
+\int \frac{du}{u^2+1} &= \int \frac{dx}{x} \\
+\arctan(u) &= \ln|x| + C \\
+\arctan(\frac{y}{x}) &= \ln|x| + C \\
+\Aboxed{y &= x\tan(\ln|x|+C)}
+\end{align*}
+
+\qs{\#28) }{
+  Solve: $$\frac{d y}{d x}=\frac{4 y-3 x}{2 x-y}$$
+}
+\sol \\
+Cross multplying, $(2x-y) dy = (4y-3x)dx \implies 0 = (4y-3x)dx + (y-2x)dy$.
+Let $x=vy$, such that $dx = vdy + ydv$. Where $0 = (4y-3vy)(ydy+ydv) + (y-2vy)dy$.
+Distributing,
+\begin{align*}
+  0 &= 4vydy+4y^2dv-3v^2ydy-3vy^2dv+ydy-2vydy \\
+  0 &= 2vydy + 4y^2dv-3v^2ydy-3vy^2dv+ydy \\
+  3vy^2dv-4y^2dv &= 2vydy-3vy^2dy-ydy \\
+  y^2(3v-4)dv &= y(2v-3v^2+1)dy \\ 
+  y^2(3v-4)dv &= -y(3v^2-2v-1) dy \\
+  \int \frac{3v-4}{(v-1)(3v+1)} dv &= -\int \frac{1}{y} dy \\
+\end{align*}
+Breaking up the L.H.S. into partial fractions,
+\begin{align*}
+  \frac{3v-4}{(v-1)(3v+1)} &= \frac{A}{v-1} + \frac{B}{3v+1} \\
+  3v-4 &= A(3v+1) + B(v-1) \\
+\end{align*}
+Let $v = -\frac{1}{3}$, such that $3(-\frac{1}{3})-4=A(0)+B(-\frac{1}{3}-1) \implies B = \frac{15}{4}$. \\
+Let $v = 1$, such that $3(1)-4=A(3+1)+B(0) \implies A = -\frac{1}{4}$. \\
+\begin{align*}
+  \int \frac{-\frac{1}{4}}{v-1} + \frac{\frac{15}{4}}{3v+1} dv &= -\int \frac{1}{y} dy \\
+  -\frac{1}{4} \ln|v-1| + \frac{15}{12} \ln|3v+1| &= -\ln|y| + C \\
+  -\frac{1}{3} \ln|\frac{x}{y} - 1| + \frac{5}{4} \ln|\frac{3x}{y}+1| &= -\ln|y| + C \\
+  \Aboxed{-\ln|\frac{x-y}{y}| + 5 \ln|\frac{3x+y}{y}| &= -4\ln|y| + C} \\
+\end{align*}
+
 \end{document}

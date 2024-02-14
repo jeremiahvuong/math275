@@ -5,7 +5,7 @@
 \input{letterfonts}
 
 \title{\Huge{Math 275} Notes}
-\author{\huge{Jeremiah Vuong}\\Los Angeles Valley College\\vuongjn5900@student.laccd.edu
+\author{\huge{Jeremiah Vuong}\\Los Angeles Pierce College\\vuongjn5900@student.laccd.edu
 }
 \date{2024 Spring}
 
@@ -76,7 +76,7 @@ Factoring out $t^r$, we get $t^r[r(r-1)+4r+2]=0$. $t > 0$ such that $t^r \neq 0$
 \section{tfi}
 \subsection{Linear DEs}
 \dfn{First-order linear DE}{
-  An ODE of the form $d y / d t+p(t) y=g(t)$ is called a first-order linear differential equation in standard form
+  An ODE of the form $$\frac{dy}{dt}+p(t) y=g(t)$$ is called a first-order linear differential equation in standard form
 }
 \ex{Solving a Linear First-Order DE}{
   i) Put the linear equation in standard form. \\
@@ -84,6 +84,29 @@ Factoring out $t^r$, we get $t^r[r(r-1)+4r+2]=0$. $t > 0$ such that $t^r \neq 0$
   iii) Multiply both sides of the standard form equation by the integrating factor. The left-hand side of the resulting equation is automatically the derivative of the product of the integrating factor and $\mathrm{y}: \quad \frac{d}{d t}\left[e^{\int p(t) d t} y\right]=e^{\int p(t) d t} g(t)$. \\
   iv) Integrate both sides of the last equation and solve for $y$
 }
+\nt{
+  Integrating Factor: $\mu = e^{\int p(t) dt}$
+}
+\qs{pg. 31: \#6)}{
+  Find the general solution of the differential equation: $t y^{\prime}-\mathrm{y}=\mathrm{t}^2 \mathrm{e}^{-\mathrm{t}}$, where $\mathrm{t}>0$
+}
+\sol \\
+Rewrite the DE: $t \frac{dy}{dt} - y = t^2 e^{-t}$.
+Divide both sides by $t$, such that $\frac{dy}{dt} - \frac{1}{t}y = t e^{-t}$.
+We can then identify $p(t) = -\frac{1}{t}$, such that $e^{\int p(t) dt} = e^{\int -\frac{1}{t} dt} = e^{-\ln|t|} = e^{ln(t^{-1})} = \frac{1}{t}$.
+Therefore, $\frac{d}{dt}[\frac{1}{t}y] = \frac{1}{t} \cdot t e^{-t} = e^{-t}$.
+Integrating both sides, $\int \frac{d}{dt}[\frac{1}{t}y] = \int e^{-t} \implies \frac{1}{t}y = -e^{-t} + C \implies \boxed{y=-te^{-t} + Ct}$
+
+\qs{\#11)}{
+  Find the solution of the initial value problem: $y^{\prime}+\frac{2}{t} y=\frac{\cos t}{t^2}, y(\pi)=0$, where $\mathrm{t}>0$
+}
+\sol \\
+We know that $p(t) = \frac{2}{t}$, such that $\mu = e^{\int \frac{2}{t} dt} = e^{2\ln|t|} = t^2$.
+Multiplying both sides by $\mu$, we get $\frac{d}{dt}[t^2 y] = t^2 \frac{\cos t}{t^2} = \cos t$.
+Integrating both sides, we get $\int \frac{d}{dt} [t^2 y] = \int \cos t \implies t^2 y = \sin t + C$.
+Such that, $y=\frac{\sin t}{t^2} + \frac{C}{t^2}$. Given that $y(\pi) = 0$, we can solve for $C$.
+$0 = \frac{\sin \pi}{\pi^2} + \frac{C}{\pi^2} \implies C = 0$. Therefore, $\boxed{y=\frac{\sin t}{t^2}}$.
+
 \subsection{Separable DEs}
 \dfn{Seperable DE}{
   An ODE written in the differential form $M(x) d x+N(y) d y=0$ is said to be separable since terms involving each variable may be placed on opposite sides of the equation. A separable equation can be solved by integrating the functions $M$ and $N$.
@@ -172,5 +195,59 @@ Let $v = 1$, such that $3(1)-4=A(3+1)+B(0) \implies A = -\frac{1}{4}$. \\
   -\frac{1}{3} \ln|\frac{x}{y} - 1| + \frac{5}{4} \ln|\frac{3x}{y}+1| &= -\ln|y| + C \\
   \Aboxed{-\ln|\frac{x-y}{y}| + 5 \ln|\frac{3x+y}{y}| &= -4\ln|y| + C} \\
 \end{align*}
+
+\subsection{Modeling with First Order DEs}
+
+\dfn{Initial Value Problem (IVP)}{
+  The IVP $\quad \frac{dx}{dt} = kx, \quad x\left(t_0\right)=x_0 \quad$ where $k$ is a constant of proportionality, serves as a model for diverse phenomena involving either growth or decay. The constant $k$ is called the growth or decay constant.
+}
+
+\begin{align*}
+  \frac{dx}{dt} &= kx \\
+  \frac{1}{x} dx &= k dt \\
+  \int \frac{1}{x} dx &= \int k dt \\
+  \ln|x| &= kt + C \\
+  |x| &= e^{kt}e^C = Ce^{kt} \\
+  x &= \pm Ce^{kt} = Ce^{kt} \\
+  x_0 &= Ce^{k(0)} = C \\
+  \Aboxed{x &= x_0 e^{kt}}
+\end{align*}
+
+\qs{IVP/Exponential}{
+  A culture initially has $P_0$ number of bacteria. At $t=1$ hour the number of bacteria is measured to be $1.5 \mathrm{P}_0$. If the rate of growth is proportional to the number of bacteria $P(t)$ present at time $t$, determine the time necessary for the number of bacteria to triple.
+}
+\sol \\
+$\frac{dP}{dt} = kP$, where $P(0) = P_0$, $P(1) = 1.5P_0$. We want to solve for $t$ such that $P(t) = 3P_0$.
+We know that $P(t) = P_0 e^{kt}$, such that $1.5P_0 = P_0 e^{k(1)} \implies 1.5 = e^k \implies ln(1.5) = k \approx 0.4055$.
+Such that, $P = P_0 e^{0.4055t} \implies 3P_0 = P_0 e^{0.4055t} \implies 3 = e^{0.4055t} \implies ln(3) = 0.4055t \implies t = \frac{\ln 3}{0.4055} = \boxed{2.7 \text{hours.}}$
+
+\dfn{Linear First-Order DEs}{
+  The mixing of two fluids sometimes gives rise to a linear first-order differential equation. When two brine solutions are mixed, if we assume that the rate $A^{\prime}(t)$ at which the amount of salt in the mixing tank changes is a net rate, then
+$$
+\begin{aligned}
+& \mathrm{dA} / \mathrm{dt}=\text { (input rate of salt) }- \text { (output rate of salt) } \\
+& =\quad R_{\text {in }} \quad-\quad R_{\text {out }} \\
+&
+\end{aligned}
+$$
+}
+
+\qs{Linear FODE}{
+  Suppose that a large mixing tank initially holds 300 gallons of brine. Another brine solution is pumped into the large tank at a rate of 3 gallons/minute, and the concentration of the salt in this inflow is 2 pounds/gallon. When the solution in the tank is well stirred, it is pumped out at the same rate as the entering solution. If 50 pounds of salt were dissolved initially in the 300 gallons, how much salt is in the tank after a long time?
+  \imgg{qs2.8}{0.4}
+}
+\sol \\
+We can model the ROC of the salt in the tank as $\frac{dA}{dt} = R_{in} - R_{out}$,
+where $\frac{dA}{dt}$ is modeled as lbs/min (such that both in and out have to be the same units).
+Such that, $R_{in} = (3 \frac{gal}{min})(2 \frac{lbs}{gal}) = 6 \frac{lbs}{min}$.
+We can then model $R_{out} = (3 \frac{gal}{min})(\frac{A}{300} \frac{lbs}{gal}) = \frac{A}{100} \frac{lbs}{min}$.
+Thus, $\frac{dA}{dt} = 6 - \frac{A}{100}$, where $A(0) = 50$.
+We can rewrite the DE as $\frac{dA}{dt} + \frac{1}{100}A = 6$, such that $p(t) = \frac{1}{100}$ and $g(t) = 6$.
+Where $\mu = e^{\int \frac{1}{100} dt} = e^{\frac{1}{100}t}$.
+Such that, $\frac{d}{dt} [e^{\frac{1}{100}t}A] = 6e^{\frac{1}{100}t} \implies \int \frac{d}{dt} [e^{\frac{1}{100}t}A] = \int 6e^{\frac{1}{100}t}
+\implies e^{\frac{1}{100}t} A = 6 \cdot 100 e^{\frac{1}{100}t} + C \implies A = 600 + \frac{C}{e^{\frac{1}{100}t}}$.
+Given that $A(0) = 50$, we can solve for $C$ such that $50 = 600 + \frac{C}{e^0} \implies C = -550$.
+Therefore, $A=600-\frac{550}{e^{\frac{1}{100}t}}$, where after a long time, $\lim_{t \to \infty} A = \boxed{600 \text{ lbs}}$.
+
 
 \end{document}

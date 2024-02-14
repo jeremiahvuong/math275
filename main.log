@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.5)  13 FEB 2024 15:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.5)  13 FEB 2024 16:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1194,30 +1194,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--53
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 125--129
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 148--152
 
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 166--169
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 189--192
 
  []
 
-[5] [6] (./main.aux) ) 
+[6]
+<./images//qs2.8.png, id=115, 262.9825pt x 322.20375pt>
+File: ./images//qs2.8.png Graphic file (type png)
+<use ./images//qs2.8.png>
+Package pdftex.def Info: ./images//qs2.8.png  used on input line 238.
+(pdftex.def)             Requested size: 105.19113pt x 128.87921pt.
+ [7 <./images//qs2.8.png>] [8] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 36605 strings out of 478268
- 738256 string characters out of 5846348
- 1106699 words of memory out of 5000000
- 54104 multiletter control sequences out of 15000+600000
- 499544 words of font info for 114 fonts, out of 8000000 for 9000
+ 36802 strings out of 478268
+ 742453 string characters out of 5846348
+ 1119923 words of memory out of 5000000
+ 54285 multiletter control sequences out of 15000+600000
+ 500111 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 96i,13n,102p,562b,1376s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 96i,13n,102p,562b,1713s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb>
-Output written on main.pdf (6 pages, 168309 bytes).
+Output written on main.pdf (8 pages, 402247 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

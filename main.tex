@@ -76,16 +76,10 @@ Factoring out $t^r$, we get $t^r[r(r-1)+4r+2]=0$. $t > 0$ such that $t^r \neq 0$
 \section{tfi}
 \subsection{Linear DEs}
 \dfn{First-order linear DE}{
-  An ODE of the form $$\frac{dy}{dt}+p(t) y=g(t)$$ is called a first-order linear differential equation in standard form
-}
-\ex{Solving a Linear First-Order DE}{
-  i) Put the linear equation in standard form. \\
-  ii) From the standard form of the equation identify $\mathrm{p}(\mathrm{t})$ and then find the integrating factor $e^{\int p(t) d t}$. No constant need be used in evaluating the indefinite integral in the exponent. \\
-  iii) Multiply both sides of the standard form equation by the integrating factor. The left-hand side of the resulting equation is automatically the derivative of the product of the integrating factor and $\mathrm{y}: \quad \frac{d}{d t}\left[e^{\int p(t) d t} y\right]=e^{\int p(t) d t} g(t)$. \\
-  iv) Integrate both sides of the last equation and solve for $y$
-}
-\nt{
-  Integrating Factor: $\mu = e^{\int p(t) dt}$
+  An ODE of the form $$\frac{dy}{dt}+P(t) y= Q(t)$$ is called a first-order linear differential equation in standard form.
+  $$ I(x) = e^{\int P(t) dt} $$
+  such that,
+  $$ y = \frac{1}{I(t)} \int I(t) Q(t) dt + C $$
 }
 \qs{pg. 31: \#6)}{
   Find the general solution of the differential equation: $t y^{\prime}-\mathrm{y}=\mathrm{t}^2 \mathrm{e}^{-\mathrm{t}}$, where $\mathrm{t}>0$
@@ -249,4 +243,162 @@ Such that, $\frac{d}{dt} [e^{\frac{1}{100}t}A] = 6e^{\frac{1}{100}t} \implies \i
 Given that $A(0) = 50$, we can solve for $C$ such that $50 = 600 + \frac{C}{e^0} \implies C = -550$.
 Therefore, $A=600-\frac{550}{e^{\frac{1}{100}t}}$, where after a long time, $\lim_{t \to \infty} A = \boxed{600 \text{ lbs}}$.
 
+\dfn{Newton's Law of Cooling}{
+  $$ \frac{d T}{d t}=k\left(T-T_m\right) $$
+  where $k$ is the constant of proportionality, $\mathrm{T}(\mathrm{t})$ is the temperature of the object for $t>0$, and $T_m$ is the temperature of the medium surrounding the object.
+}
+
+\qs{Newton's Law of cooling}{
+  When a cake is removed from an oven, its temperature is measured at 300 degrees F.
+  Three minutes later its temperature is 200 degrees F. How long will it take to cool to a temperature of 75 degrees $\mathrm{F}$,
+  if the room temperature is 70 degrees $\mathrm{F}$?
+}
+\sol \\
+We can set up a DE, $\frac{dT}{dt} = k(T-70)$, where $T(0) = 300$ and $T(3) = 200$.
+Seperating the variables, $\frac{dT}{T-70} = k dt \implies \int \frac{dT}{T-75} = \int k dt
+\implies \ln|T-70| = kt + C$.
+Where at $T(0) = 300 \implies \ln 230 = C$.
+Also at $T(3) = 200 \implies \ln 130 = 3k + \ln 230 \implies k = \frac{\ln 130 - \ln 230}{3} \approx -0.19018$.
+Raising both by $e$,
+\begin{align*}
+  e^{ln|T-70|} &= e^{-0.19018t + \ln 230} \\
+  T-70 &= 230 e^{-0.19018t} \\
+  T &= 70 + 230 e^{-0.19018t} \\
+  75 &= 70 + 230 e^{-0.19018t} \\
+  5 &= 230 e^{-0.19018t} \\
+  \frac{5}{230} &= e^{-0.19018t} \\
+  ln (\frac{1}{46}) &= ln(e^{-0.19018t}) \\
+  t &= \frac{\ln(\frac{1}{46})}{-0.19018} \approx \boxed{20.1 \text{ minutes}}
+\end{align*}
+
+\subsection{Exact DEs}
+
+\dfn{Exact Differential}{
+  A differential expression $M(x, y) d x+N(x, y) d y=0$ is an exact differential if it corresponds to the differential of some function $f(x, y)$. A first-order differential equation of the form
+  $$ M(x, y) d x+N(x, y) d y=0 $$
+  is said to be an exact equation if the expression on the left-hand side is an exact differential.
+  \double
+  A necessary and sufficient condition that $M(x, y) d x+N(x, y) d y$ be an exact differential is $\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}$.
+}
+
+\qs{pg. 75: \#6)}{Determine whether the equation
+$$ \left(y e^{x y} \cos (2 x)-2 e^{x y} \sin (2 x)+2 x\right)+\left(x e^{x y} \cos (2 x)-3\right) y^{\prime}=0 $$
+is exact. If it is exact, find the solution.
+}
+\sol \\
+$(y e^{xy} \cos (2x) - 2 e^{xy} \sin (2x) +2x) dx + (x e^{xy} \cos (2x) - 3) dy = 0$, where $M$ is the first term and $N$ is the second term.
+\begin{align*}
+  \del{M}{y} &= e^{xy} \cos(2x) + yx e^{xy} \cos(2x) - 2xe^{xy} \sin(2x) \\
+  \del{N}{x} &= e^{xy} \cos(2x) + yx e^{xy} \cos(2x) - 2xe^{xy} \sin(2x)
+\end{align*}
+Therefore they are exact such that $M = \del{f}{x}$ and $N = \del{f}{y}$.
+\begin{align*}
+  \int \del{f}{y} &= \int (x e^{xy} \cos (2x) -3) dy \\
+  f(x,y) &= x \cos (2x) \frac{e^{xy}}{x} -3y + g(x) \\
+  \del{f}{x} &= ye^{xy} \cos(2x) - 2e^{xy} \sin(2x) + g'(x) \\
+  &= ye^{xy} \cos(2x) - 2e^{xy} \sin(2x) + 2x \implies g'(x) = 2x \implies g(x) = x^2 \\
+  f(x,y) &= \boxed{e^{xy} \cos(2x)  -3y + x^2 = C}
+\end{align*}
+
+\nt{
+  $$\frac{d}{dx} (fgh) = f'gh + fg'h + fgh'$$
+}
+
+\qs{\#10)}{Solve the initial value problem:
+$$\left(9 x^2+y-1\right)-(4 y-x) y^{\prime}=0, \quad y(1)=0 $$
+}
+
+\sol \\
+$(9x^2+y-1)dx + (x-4y)dy = 0$, $y(1) = 0$, where $M$ is the first term and $N$ is the second term. \\
+$\del{M}{y} = 1 = \del{N}{x} \implies$ exact.
+\begin{align*}
+  \int \del{f}{x} &= \int (9x^2+y-1) dx \\
+  f(x,y) &= 3x^3 + xy - x + g(y) \\
+  \del{f}{y} &= x + g'(y) = x - 4y \\
+  \implies g(y) &= -2y^2 \\
+  f(x,y) = C &= 3x^3 + xy - x - 2y^2 \\
+  y(1)= 0 \implies 2 &= C \\
+  \Aboxed{3x^3 + xy -x -2y^2 &= 2}
+\end{align*}
+
+\qs{\#12) }{Find the value of $b$ for which the equation
+$$ \left(y e^{2 x y}+x\right)+b^{2 x y} y^{\prime}=0 $$
+is exact, and then solve it using that value of $b$.}
+\sol \\
+$(y e^{2xy} + x)dx + b^{2xy}dy = 0$, where $M$ is the first term and $N$ is the second term. \\
+\begin{align*}
+  \del{M}{y} &= e^{2xy} + 2xy e^{2xy} \\
+  \del{N}{x} &= b [e^{2xy} + 2xy e^{2xy}] \implies b = 1 \\
+\end{align*}
+Such that the equation is exact when $b=1$.
+\begin{align*}
+  \int \del{f}{y} &= \int (xe^{2xy}) dy \\
+  f(x,y) &= \frac{1}{2}e^{2xy} + g(x) \\
+  \del{f}{x} &= \frac{1}{2}(2y e^{2xy}) + g'(x) \\ 
+  \del{f}{x} &= y e^{2xy} + g'(x) = y e^{2xy} + x \\
+  &\implies g'(x) = x \implies g(x) = \frac{1}{2}x^2 \\
+  f(x,y) &= C = \frac{1}{2}e^{2xy} + \frac{1}{2}x^2 \\
+  \Aboxed{C &= e^{2xy} + x^2}
+\end{align*}
+
+\subsection{Euler's Method}
+\dfn{Euler's Method}{
+  For small $\Delta t, \frac{d y}{d t} \approx \frac{\Delta y}{\Delta t}$, or equivalently, $\Delta y \approx \frac{d y}{d t} \Delta t$.
+}
+
+\qs{pg. 82: \#4}{
+  Given $y^{\prime}=3 \cos t-2 y, \quad y(0)=0$. \\ 
+a) Find approximate values of the solution of the IVP at $\mathrm{t}=0.1,0.2,0.3$, and 0.4 using Euler's method with $h=\Delta t=0.1$. \\
+d) Find the actual solution of the IVP and evaluate the solution at $t=0.1,0.2,0.3$, and 0.4 . Compare these values with the results in part a).
+}
+\sol a) We have that $\Delta y = \frac{dy}{dt} \Delta t$ such that, $\Delta y = (3 \cos t - 2y) (0.1)$.
+
+\begin{center}
+\begin{tabular}{l|l|l}
+  $t$ & $y$    & $\Delta y$ \\
+  0   & 0      & 0.3        \\
+  0.1 & 0.3    & 0.2385     \\
+  0.2 & 0.5385 & 0.1863     \\
+  0.3 & 0.7248 & 0.1416     \\
+  0.4 & 0.8664  &           
+\end{tabular}
+\end{center}
+\noindent
+d) Given $\frac{dy}{dt} + 2y  = 3\cos t$, $y(0) =0$.
+Such that $I(t) = e^{\int 2 dt} = e^{2t}$.
+\begin{align*}
+  \frac{d}{dt} [e^{2t}y] &= 3 e^{2t} \cos t \\
+  y &= \frac{1}{e^{2t}} \int e^{2t} 3 \cos t dt \\
+\end{align*}
+Let $u = \cos t \implies du = -\sin t dt$, $dv = 3 e^{2t} \implies v = \frac{3}{2} e^{2t}$
+$$ \int e^{2t} 3 \cos t dt = \frac{3}{2} e^{2t} \cos t + \frac{3}{2} \int e^{2t} \sin t dt $$
+Let $u = \sin t \implies du = \cos t dt$, $dv = e^{2t} \implies v = \frac{1}{2} e^{2t}$.
+\begin{align*}
+&= \frac{3}{2} e^{2t} \cos t + \frac{3}{2} \left( \frac{1}{2} e^{2t} \sin t - \frac{1}{2} \int e^{2t} \cos t dt \right) \\
+3 \int e^{2t} \cos t dt &= \frac{3}{2} e^{2t} \cos t + \frac{3}{4} e^{2t} \sin t - \frac{3}{4} \int e^{2t} \cos t dt \\
+\frac{15}{4} \int e^{2t} \cos t dt &= \frac{3}{2} e^{2t} \cos t + \frac{3}{4} e^{2t} \sin t \\
+\int e^{2t} \cos t dt &= \frac{2}{5} e^{2t} \cos t + \frac{1}{5} e^{2t} \sin t \\
+y &= \frac{3}{e^{2t}} [\frac{2}{5} e^{2t} \cos t + \frac{1}{5} e^{2t} \sin t] + C \\
+y &= \frac{6}{5} \cos t + \frac{3}{5} \sin t + Ce^{-2t} \\
+0 &= \frac{6}{5} \cos 0 + \frac{3}{5} \sin 0 + Ce^{-2(0)} \implies C = -\frac{6}{5} \\
+\Aboxed{y &= \frac{6}{5} \cos t + \frac{3}{5} \sin t - \frac{6}{5} e^{-2t}}
+\end{align*}
+Testing $y(0.4) = \frac{6}{5} \cos 0.4 + \frac{3}{5} \sin 0.4 - \frac{6}{5} e^{-2(0.4)} \boxed{\approx 0.7997}$. \\
+
+\qs{\#10}{
+  Use Euler's method to find approximate values of the solution of the IVP $\quad \mathrm{y}^{\prime}=\mathrm{y}(3-\mathrm{ty}), \quad \mathrm{y}(0)=0.5, \quad$ at $\mathrm{t}=0.5$ with $h=\Delta t=0.1$.
+}
+\sol We have that $\Delta y = y(3-ty) (0.1)$
+\begin{center}
+  \begin{tabular}{l|l|l}
+    $t$ & $y$    & $\Delta y$ \\
+    0   & 0.5    & 0.15       \\
+    0.1 & 0.65   & 0.1908     \\
+    0.2 & 0.8408 & 0.2381     \\
+    0.3 & 1.0789 & 0.2887     \\
+    0.4 & 1.3676 & 0.335      \\
+    0.5 & 1.7031 & 
+  \end{tabular}
+  \end{center}
+$\boxed{y(0.5) \approx 1.7031}$.
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.5)  13 FEB 2024 20:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.5)  20 FEB 2024 16:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1047,16 +1047,15 @@ LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 \c@tcb@cnt@Example=\count440
 \c@tcb@cnt@Definition=\count441
 \c@tcb@cnt@question=\count442
-\c@tcb@cnt@qstion=\count443
-\c@tcb@cnt@wconc=\count444
+\c@tcb@cnt@wconc=\count443
  (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf-blur/tikzlibraryshadows.blur.code.tex  v1.02, 2012/12/09 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
 File: tikzlibraryshadows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )
-\pgfbs@fading@count=\count445
+\pgfbs@fading@count=\count444
 )
-\c@tcb@cnt@Theorem=\count446
+\c@tcb@cnt@Theorem=\count445
 ) (./macros.tex) (./letterfonts.tex) (./main.aux)
 \openout1 = `main.aux'.
 
@@ -1135,16 +1134,16 @@ LaTeX Font Info:    ... okay on input line 12.
 
 (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count447
+\scratchcounter=\count446
 \scratchdimen=\dimen330
 \scratchbox=\box141
-\nofMPsegments=\count448
-\nofMParguments=\count449
+\nofMPsegments=\count447
+\nofMParguments=\count448
 \everyMPshowfont=\toks53
-\MPscratchCnt=\count450
+\MPscratchCnt=\count449
 \MPscratchDim=\dimen331
-\MPnumerator=\count451
-\makeMPintoPDFobject=\count452
+\MPnumerator=\count450
+\makeMPintoPDFobject=\count451
 \everyMPtoPDFconversion=\toks54
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1156,7 +1155,7 @@ Package hyperref Info: Link coloring ON on input line 12.
 LaTeX Info: Redefining \ref on input line 12.
 LaTeX Info: Redefining \pageref on input line 12.
 LaTeX Info: Redefining \nameref on input line 12.
-\c@lstlisting=\count453
+\c@lstlisting=\count452
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks55
@@ -1195,35 +1194,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--53
  []
 
 [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 148--152
+Underfull \hbox (badness 10000) in paragraph at lines 142--146
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 189--192
+Underfull \hbox (badness 10000) in paragraph at lines 183--186
 
  []
 
 [6]
-<./images//qs2.8.png, id=115, 262.9825pt x 322.20375pt>
+<./images//qs2.8.png, id=110, 262.9825pt x 322.20375pt>
 File: ./images//qs2.8.png Graphic file (type png)
 <use ./images//qs2.8.png>
-Package pdftex.def Info: ./images//qs2.8.png  used on input line 238.
+Package pdftex.def Info: ./images//qs2.8.png  used on input line 232.
 (pdftex.def)             Requested size: 105.19113pt x 128.87921pt.
- [7 <./images//qs2.8.png>] [8] (./main.aux) ) 
+ [7 <./images//qs2.8.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 282--282
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 327--329
+
+ []
+
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 385--387
+
+ []
+
+[11] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 36802 strings out of 478268
- 742453 string characters out of 5846348
- 1119923 words of memory out of 5000000
- 54285 multiletter control sequences out of 15000+600000
- 500111 words of font info for 116 fonts, out of 8000000 for 9000
+ 36842 strings out of 478268
+ 743333 string characters out of 5846348
+ 1115746 words of memory out of 5000000
+ 54310 multiletter control sequences out of 15000+600000
+ 500730 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 96i,13n,102p,562b,1713s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 96i,13n,102p,562b,1717s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb>
-Output written on main.pdf (8 pages, 402247 bytes).
+Output written on main.pdf (11 pages, 422266 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 244 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 252 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 260 words of extra memory for PDF output out of 10000 (max. 10000000)
 

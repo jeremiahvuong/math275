@@ -461,9 +461,9 @@ b) $W = \left| \begin{array}{ccc}
 \dfn{Auxiliary Equations}{
   The auxiliary equation to the ODE
   $$a y^{\prime \prime}+b y^{\prime}+c y=0 \text { is } a r^2+b r+c=0 $$
-  If the auxiliary equation has two distinct roots $r_1$ and $r_2$, then the general solution is
+  (Sec. 3.1) If the auxiliary equation has two distinct roots $r_1$ and $r_2$, then the general solution is
   $$y=c_1 e^{r_1 x}+c_2 e^{r_2 x}$$
-  If the auxiliary equation has two equal roots, then the general solution is
+  (Sec. 3.4) If the auxiliary equation has two equal roots, then the general solution is
   $$y=c_1 e^{r_1 x}+c_2 x e^{r_1 x}$$
 }
 
@@ -514,5 +514,753 @@ Therefore $\boxed{y'' + y' - 6y = 0}$.
     \therefore \Aboxed{y &= c_1 e^t + c_2 t e^t}
   \end{align*}
 }
+
+\subsection*{3.3, 4.2}
+\thm{Euler's Formula}{
+  $$e^{i \theta}=\cos \theta+i \sin \theta$$
+}
+\proof
+\begin{align*}
+  &\cos \theta + i \sin \theta \\
+  &= (1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \frac{\theta^6}{6!} + \ldots) + i (\theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \frac{\theta^7}{7!} + \ldots) \\
+  &= 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \frac{\theta^6}{6!} + \ldots + i \theta - i \frac{\theta^3}{3!} + i \frac{\theta^5}{5!} - i \frac{\theta^7}{7!} + \ldots \\
+  \intertext{Rearanging by degree...}
+  &= 1 + i \theta - \frac{\theta^2}{2!} - i \frac{\theta^3}{3!} + \frac{\theta^4}{4!} + i \frac{\theta^5}{5!} - \frac{\theta^6}{6!} - i \frac{\theta^7}{7!} + \ldots
+  \intertext{Going back to the R.H.S}
+  e^{i \theta} &= 1 + i \theta - \frac{\theta^2}{2!} - i \frac{\theta^3}{3!} + \ldots \\
+  &= 1 + i \theta \frac{i^2 \theta^2}{2!} + \frac{i^3 \theta^3}{3!} + \ldots = 1 + i \theta - \frac{\theta^2}{2!} - \frac{i\theta^2}{2!} - \frac{\theta^3}{3!} + \ldots \\
+  \intertext{Such that $i$ keeps "oscillating" between the real and imaginary parts.}
+  &= \cos \theta + i \sin \theta \qed
+\end{align*}
+\dfn{Complex Auxiliary Equations}{
+  If the solutions of the auxiliary equation for $a y^{\prime \prime}+b y^{\prime}+c y=0$ are complex, $r=\alpha \pm \beta i$, then the general solution is
+  $$ y=e^{\alpha x}\left(c_1 \cos \beta x+c_2 \sin \beta x\right)$$
+}
+\proof
+Given that two $r$ solutions to the auxiliary equation
+\begin{align*}
+  r_1 &= \alpha + \beta i, r_2 = \alpha - \beta i \\
+  \intertext{The general solution is}
+  y &= c_1 e^{(\alpha + \beta i)x} + c_2 e^{(\alpha - \beta i)x} \\
+  &= c_1 e^{\alpha x} e^{i \beta x} + c_2 e^{\alpha x} e^{-i \beta x} \\
+  \intertext{Such that the following equals}
+  e^{\beta x i} &= \cos \beta x + i \sin \beta x \\
+  e^{-\beta x i} &= \cos \beta x - i \sin \beta x \\
+  \implies e^{i \beta x} + e^{-i \beta x} &= 2 \cos \beta x \\
+  \implies e^{i \beta x} - e^{-i \beta x} &= 2i \sin \beta x
+  \intertext{Let $c_1 = c_2 = 1$ such that we can solve for a specific solution $y_1$}
+  y_1 &= e^{\alpha x} e^{\beta x i} + e^{\alpha x} e^{-\beta x i} \\
+  &= e^{\alpha x} (e^{\beta x i} + e^{-\beta x i}) \\
+  &= 2e^{\alpha x} (\cos \beta x) \\
+  \intertext{Let $c_1 = 1, c_2 -1$ such that we can solve for a specific solution $y_2$}
+  y_2 &= e^{\alpha x} (e^{\beta x i} - e^{-\beta x i}) \\
+  &= 2i e^{\alpha x} (\sin \beta x)
+  \intertext{Such that we can form another solution by adding particular solutions}
+  y_1 + y_2 &= 2e^{\alpha x} (\cos \beta x) + 2i e^{\alpha x} (\sin \beta x)
+  \intertext{Where subsequently the solution is true for another constant, such that the general solution is}
+  \Aboxed{y &= e^{\alpha x} (c_1 \cos \beta x + c_2 \sin \beta x)}
+\end{align*}
+\qs{}{
+  Solve the ODE
+  $$ y^{\prime \prime}+4 y^{\prime}+7 y=0 $$
+}
+\sol The auxiliary equation is $r^2 + 4r + 7 = 0$.
+\begin{align*}
+  r &= \frac{-4 \pm \sqrt{4^2 - 4(1)(7)}}{2} \\
+  &= \frac{-4 \pm \sqrt{-12}}{2} = \frac{-4 \pm \sqrt{-4 \cdot 3}}{2} = \frac{-4 \pm 2i\sqrt{3}}{2} = -2 \pm i\sqrt{3} \\
+  &\implies \alpha = -2, \beta = \sqrt{3} \\
+  \Aboxed{y &= e^{-2x} (c_1 \cos \sqrt{3}x + c_2 \sin \sqrt{3}x)}
+\end{align*}
+
+\qs{}{
+  Solve the initial-value problem
+  $$4 y^{\prime \prime}+4 y^{\prime}+17 y=0, \quad y(0)=-1, \quad y^{\prime}(0)=2$$
+}
+\sol The auxiliary equation is $4r^2 + 4r + 17 = 0$.
+\begin{align*}
+  r &= \frac{-4 \pm \sqrt{4^2 - 4(4)(17)}}{8} = \frac{-4 \pm \sqrt{-4 \cdot 3}}{8} \\
+  &= \frac{-4 \pm 16i}{8} = -\frac{1}{2} \pm 2i \\
+  &\implies \alpha = -\frac{1}{2}, \beta = 2 
+  \intertext{Such that the general solution is}
+  y &= e^{-\frac{1}{2}x} (c_1 \cos 2x + c_2 \sin 2x)
+  \intertext{Given that $y(0) = -1$}
+  -1 &= e^{0} (c_1 \cos 0 + c_2 \sin 0) \implies c_1 = -1 \\
+  \implies y &= e^{-\frac{1}{2}x} (-\cos 2x + c_2 \sin 2x)
+  \intertext{Taking the derivative (chain)...}
+  y' &= -\frac{1}{2}e^{\frac{1}{2}x} (-\cos 2x + c_2 \sin 2x) + e^{-\frac{1}{2}x} (2 \sin x + 2c_2 \cos 2x)
+  \intertext{Given that $y'(0) = 2$}
+  2 &= -\frac{1}{2}e^{0} (-\cos 0 + c_2 \sin 0) + e^{0} (2 \sin 0 + 2c_2 \cos 0) \\
+  2 &= -\frac{1}{2} (-1) + 2c_2 \implies c_2 = \frac{3}{4}
+  \intertext{Therefore the particular solution is}
+  \Aboxed{y &= e^{-\frac{1}{2}x} (-\cos 2x + \frac{3}{4} \sin 2x)}
+\end{align*}
+
+\qs{}{
+  Solve the DE  
+  $$y^{\prime \prime \prime}+3 y^{\prime \prime}-4 y=0$$
+}
+\sol The auxiliary equation is $r^3 + 3r^2 - 4 = 0$.
+We can say that are possible rational solutions are all factors of $p=-4$ and $p=1$, $\frac{p}{q} = \pm 1, \pm 2, \pm 4$.
+By inspection, $r=1$ is a solution. Therefore, we can factor the polynomial by synthetic division.
+\begin{align*}
+  (r-1)(r^2 + 4r + 4) &= 0 \\
+  (r-1)(r+2)^2 &= 0 \\
+  r_1 = 1, r_2 = -2, r_3 = -2
+  \intertext{Therefore the general solution is}
+  \Aboxed{y = c_1 e^x + c_2 e^{-2x} + c_3 x e^{-2x}}
+\end{align*}
+Note that we can graph the function (calculator lol) to find the solutions ($r$). Where through points are definite and touch points are reflective of two solutions (such as $r_2 = r_3 = -2$). \\
+
+\ex{No $y'$ term with imaginary term}{
+  Given $y'' + k^2 y =0$.
+  We can say the auxiliary equation is $r^2 + k^2 = 0 \implies r = \pm ki \implies r = 0 \pm ki$.
+  Where $\alpha = 0$ and $\beta = k$. Therefore the general solution is
+  $$y = c_1 \cos kx + c_2 \sin kx$$
+}
+
+\ex{No $y'$ term with real term}{
+  Given $y'' - k^2 y =0$.
+  We can say the auxiliary equation is $r^2 - k^2 = 0 \implies r = \pm k$.
+  Therefore the general solution is
+  $$y = c_1 e^{kx} + c_2 e^{-kx}$$
+  Note that we can also find a specific solution such that
+  $$c_1 = c_2 = \frac{1}{2} \implies y_1 = \frac{e^{kx}+e^{-kx}}{2} = \cosh kx$$
+  Also where,
+  $$c_1 = \frac{1}{2}, c_2 = -\frac{1}{2} \implies y_2 = \frac{e^{kx}-e^{-kx}}{2} = \sinh kx$$
+  Where we can combine linear combinations of these to form the general solution.
+  $$ y = c_1 \cosh kx + c_2 \sinh kx $$
+}
+
+\qs{}{
+  Solve a)
+  $$ y'' + 3y = 0 $$
+  b) $$y'' -9y =0$$
+}
+\sol \\
+a)
+$$ y = c_1 \cos \sqrt{3}x + c_2 \sin \sqrt{3}x $$
+b) 
+$$ y = c_1 \cosh 3x + c_2 \sinh 3x \quad \text{or} \quad y = c_1 e^{3x} + c_2 e^{-3x}$$
+
+\qs{}{
+  Solve the following ODE
+  $$\frac{d^4 y}{d t^4}+2 \frac{d^2 y}{d t^2}+y=0$$
+}
+\sol The auxiliary equation is $r^4 + 2r^2 + 1 = 0$.
+We can factor the equation such that $\left(r^2+1 \right)^2 = 0 \implies r^2 = 1 \implies r = \pm i$.
+Subsequenty that $r = 0 \pm i$ such that $\alpha = 0, \beta = 1$.
+Therefore the general solution is
+$$\boxed{y = c_1 \cos t + c_2 \sin t + c_3 t \cos t + c_4 t \sin t}$$
+Note that the OG equation is to the 4th degree, such that we have 4 solutions.
+
+\subsection*{3.5 Nonhomogeneous Equations; Method of Undetermined Coefficients}
+\dfn{Second Order Linear Nonhomogeneous DE}{
+  A second-order linear nonhomogeneous DE is an equation of the form
+  $$L[y]=y^{\prime \prime}+p(t) y^{\prime}+q(t) y=g(t)$$
+  where $g(t)$ is a continuous function on an interval I, such that it is a polynomial, exponential, sine, cosine, or a linear combination of these.
+  \double
+  In a nonhomogeneous ODE, the solution to the corresponding homogeneous ODE is called the complementary solution and is denoted by $\mathrm{y}_{\mathrm{c}}$.
+  \double
+  A particular solution to a nonhomogeneous ODE is denoted by $y_p$.
+  \double
+  Superposition Principle: The general solution to a nonhomogeneous $O D E$ is $y=y_c+y_p$.
+}
+
+\qs{}{
+  Solve
+  $$ y^{\prime \prime}+3 y^{\prime}+2 y=4 x^2 $$
+}
+\sol \\
+We first solve the homogeneous equation $y^{\prime \prime}+3 y^{\prime}+2 y=0$.
+The auxiliary equation is $r^2 + 3r +2 = 0 \implies (r+2)(r+1)$, such that $r_1 = -2, r_2 = -1$.
+Therefore the complementary solution is $y_c = c_1 e^{-2x} + c_2 e^{-x}$.
+\double
+We subsequently guess a particular solution $y_p$ (such that we begin with a general 2nd degree polynomial).
+Where $y_p = Ax^2 + Bx + C \implies y_p' = 2Ax + B \implies y_p'' = 2A$.
+Such that,
+\begin{align*}
+y_p'' + 3y_p' + 2y_p &= 2A + 3(2Ax + B) + 2(Ax^2 + Bx + C) \\
+&= 2A + 6Ax + 3B + 2Ax^2 + 2Bx + 2C = 4x^2 \\
+x^2 &: 2A = 4 \implies A = 2 \\
+x &: 6A + 2B = 0 \implies 12 + 2B = 0 \implies B = -6 \\
+\text{Constant} &: 2A + 3B +2C = 0 \implies 4 -18 + 2C = 0 \implies C = 7
+\end{align*}
+Therefore the particular solution is $y_p = 2x^2 - 6x + 7$.
+Forming the general solution,
+$$\boxed{y = y_c + y_p = c_1 e^{-2x} + c_2 e^{-x} + 2x^2 - 6x + 7}$$
+
+\qs{}{
+  Solve  
+  $$ y^{\prime \prime}-3 y^{\prime}=8 e^{3 x}+4 \sin x $$
+}
+\sol \\
+We first solve the homogeneous equation $y^{\prime \prime}-3 y^{\prime}=0$.
+The auxiliary equation is $r^2 - 3r = 0 \implies r(r-3) = 0 \implies r_1 = 0, r_2 = 3$.
+Therefore the complementary solution is $y_c = c_1 + c_2 e^{3x}$.
+\double
+Since we have $c_2 e^{3x}$ in the complementary solution,
+we must guess a particular solution such that $y_p = Axe^{3x} + B \cos x + C \sin x$.
+$y_p' = A(e^{3x} + 3x e^{3x}) - B \sin x + C \cos x$ and $y_p'' = A(6e^{3x} + 9x e^{3x}) - B \cos x - C \sin x$.
+Such that,
+\begin{align*}
+  y_p'' - 3y_p' &= A(6e^{3x} + 9x e^{3x}) - B \cos x - C \sin x - 3[A(e^{3x} + 3x e^{3x}) - B \sin x + C \cos x] \\
+  &= 3A e^{3x} - B \cos x - C \sin x + 3B \sin x - 3C \cos x = 8e^{3x} + 4 \sin x \\
+  e^{3x} &: 3A = 8 \implies A = \frac{8}{3} \\
+  \cos x &: -B -3C = 0 \\
+  \sin x &: 3B + 4C = 4 \implies C = -\frac{2}{5} \implies B = \frac{6}{5}
+\end{align*}
+Therefore the particular solution is $y_p = \frac{8}{3}xe^{3x} + \frac{6}{5} \cos x - \frac{2}{5} \sin x$.
+Forming the general solution,
+$$\boxed{y = y_c + y_p = c_1 + c_2 e^{3x} + \frac{8}{3}xe^{3x} + \frac{6}{5} \cos x - \frac{2}{5} \sin x}$$
+
+\qs{}{
+  Solve  
+  $$ y^{\prime \prime}+y=x \cos x-\cos x $$
+}
+\sol The homogeneous equation is $y^{\prime \prime}+y=0$ such that the auxiliary (characteristic) equation is $r^2 + 1 = 0 \implies r^2 = -1 \implies r = 0 \pm i$.
+Therefore the complementary solution is $y_c = c_1 \cos x + c_2 \sin x$.
+\double
+We already have a $\cos x$ in the complementary solution (where $c_1 \cos x + c_2 \sin x$), such that we must guess a particular solution such that for $\cos x$, $y_p = (Ax + B) \cos x + (Cx + D) \sin x$.
+Such that, $y_p'' = \left(-Ax^2 + (-B+4C)x + (2A+2D)\right) \cos x + (-Cx^2 + (-4A-D)x -2B-2C) \sin x $.
+\begin{align*}
+  y_p'' + y_p &= \left(-Ax^2 + (-B+4C)x + (2A+2D)\right) \cos x + (-Cx^2 + x -2B+2C) \sin x \\
+  &+ (Ax + B) \cos x + (Cx + D) \sin x
+  \intertext{Simplifying the L.H.S.}
+  &= (4Cx + (2A+2D))\cos x + (-4Ax + (x-2B+2C))\sin x = x \cos x - \cos x
+  \intertext{Solving for the coefficents}
+  & -4A = 0 \implies A = 0 \\
+  & -2B-2C = 0 \implies B = C \\
+  & 4C = 1 \implies C = \frac{1}{4} = B \\
+  & 2D = -1 \implies D = -\frac{1}{2}
+\end{align*}
+Therefore the particular solution is $y_p = \frac{1}{4}x \cos x + \frac{1}{4} x^2 \sin x - \frac{1}{2} \sin x$.
+Forming the general solution,
+$$\boxed{y = y_c + y_p = c_1 \cos x + c_2 \sin x + \frac{1}{4}x \cos x + \frac{1}{4} x^2 \sin x - \frac{1}{2} x \sin x }$$
+
+\qs{}{
+  Determine the form of the particular solution for the following nonhomogeneous ODE:
+  $$ y^{\prime \prime}-2 y^{\prime}+y=10 e^{-2 x} \cos x $$
+}
+\sol The auxiliary equation is $r^2 - 2r + 1 =0 \implies (r-1)^2 = 0 \implies r = 1$.
+Such that the complementary solution is $y_c = c_1 e^x + c_2 x e^x$.
+Therefore $\boxed{y_p = Ae^{-2x} \cos x + Be^{-2x} \sin x}$
+
+\subsection*{3.6 Variation of Parameters}
+\dfn{Variation of Parameters}{
+  To solve the ODE
+  $$ y^{\prime \prime}+P(t) y^{\prime}+Q(t) y=f(t), $$
+  we find the complementary solution to the corresponding homogeneous ODE, $y^{\prime \prime}+P(t) y^{\prime}+Q(t) y=0$, and then find the particular solution of the form
+  $$ y_p=u_1 y_1+u_2 y_2 $$where $u_1^{\prime}=-\frac{y_2 f(t)}{W}$ and $u_2^{\prime}=\frac{y_1 f(t)}{W}$, with $\mathrm{W}$ being the Wronskian.
+  Therefore, the general solution is $y=y_c+y_p$.
+}
+
+\qs{}{
+  Solve
+  $$ y^{\prime \prime}-4 y^{\prime}+4 y=(t+1) e^{2 t} $$
+}
+\sol The auxiliary equation is $r^2 - 4r + 4 = 0 \implies (r-2)^2 = 0 \implies r = 2$.
+Such that $y_c = c_1 e^{2t} + c_2 t e^{2t}$. This means that $y_1 = e^{2t}$ and $y_2 = t e^{2t}$.
+\double
+We can find the Wronskian such that $W = \left| \begin{array}{cc} e^{2t} & t e^{2t} \\ 2e^{2t} & (1+2t)e^{2t} \end{array} \right| = e^{4t}$.
+\double
+Where 
+\begin{align*}
+u_1^{\prime} &= -\frac{te^{2t}(t+1)e^{2t}}{e^{4t}} = -t^2-t \implies u_1 = -\frac{t^3}{3} - \frac{t^2}{2} \\
+u_2^{\prime} &= \frac{e^{2t}(t+1)e^{2t}}{e^{4t}} = t+1 \implies u_2 = \frac{t^2}{2} + t \\
+y_p &= \left(-\frac{t^3}{3} - \frac{t^2}{2}\right) e^{2t} + \left(\frac{t^2}{2} + t\right) t e^{2t} \\
+y_p &= \frac{1}{6}t^3 e^{2t} + \frac{1}{2}t^2 e^{2t}
+\end{align*}
+Therefore the general solution is
+$$\boxed{y = c_1 e^{2t} + c_2 t e^{2t} + \frac{1}{6}t^3 e^{2t} + \frac{1}{2}t^2 e^{2t}}$$
+
+\qs{}{
+Solve  
+$$4 y^{\prime \prime}+36 y=\csc 3 t $$
+}
+\sol To use variations of parameters we must first have $y''$ as the leading term. Therefore we divide by 4 such that $y'' + 9y = \frac{1}{4} \csc 3t$.
+\double
+The auxiliary equation is $r^2 + 9 = 0 \implies r = 0 \pm 3i$. Such that $y_c = c_1 \cos 3t + c_2 \sin 3t$.
+Where $y_1 = \cos 3t$ and $y_2 = \sin 3t$.
+\double
+We can find the Wronskian such that $W = \left| \begin{array}{cc} \cos 3t & \sin 3t \\ -3\sin 3t & 3\cos 3t \end{array} \right| = 3$.
+\double
+Where
+\begin{align*}
+u_1^{\prime} &= -\frac{\sin 3t \frac{1}{4 \sin 3t}}{3} = -\frac{1}{12} \implies u_1 = -\frac{1}{12} t \\
+u_2^{\prime} &= \frac{\cos 3t \frac{1}{4\sin 3t}}{3} = \frac{1}{12} \cot 3t \implies u_2 = \frac{1}{36} \ln |\sin 3t| \\
+y_p &= -\frac{1}{12} t \cos 3t + \frac{1}{36} \ln |\sin 3t| \sin 3t
+\end{align*}
+Therefore the general solution is
+$$\boxed{y = c_1 \cos 3t + c_2 \sin 3t -\frac{1}{12} t \cos 3t + \frac{1}{36} \sin 3t \ln |\sin 3t|}$$
+
+\subsection*{3.7 Mechanical and Electrical Vibrations}
+\imgg{3.7}{0.7}
+Given that $F=ma$ we can say that $a = u''$. We can also say that in a static case we have that $mg - kL = 0 \implies mg = kL$.
+Where if we have some damping force $\gamma$ and external force $F(t)$, we can say that
+$$ m u'' + \gamma u' + ku = F(t) $$
+
+\qs{}{
+  A mass weighing $4 \mathrm{lb}$ stretches a spring $2 \mathrm{in}$. Suppose that the mass is given an additional 6-in displacement in the positive direction and then released. The mass is in a medium that exerts a viscous resistance of $6 \mathrm{lb}$ when the mass has a velocity of $3 \mathrm{ft} / \mathrm{s}$. Under the assumptions discussed in this section, formulate the initial value problem that governs the motion of the mass.
+}
+\sol We are given a weight of 4 lbs but we want mass, such that $m = \frac{W}{g} = \frac{4}{32} = \frac{1}{8} \frac{\text{lb} \cdot \text{s}^2}{\text{ft}}$.
+\double
+We are given a viscous resistance of 6 lbs, in other words $F_\gamma = 6$. Since $6 = \gamma u' = \gamma \cdot 3 \implies \gamma = 2$.
+\double
+We are given a displacement of 2 inches ($\frac{1}{6}$ feet), such that by hook's law, we have, $F = kx \implies 4 = k \cdot \frac{1}{6} \implies k = 24$.
+\double
+Setting up the full equation of motion, we have
+$$ \frac{1}{8} u'' + 2u' + 24u = 0 $$
+Since we know that at $t=0$ the mass is given an additional 6-in ($\frac{1}{2}$ feet) displacement in the positive direction and then released, we have that
+$ u(0) = \frac{1}{2}$ and $u'(0) = 0$.
+\begin{align*}
+  u'' + 16u' + 192u = 0 &\implies 1r^2 + 16r +192 = 0
+  \intertext{Doing the quadratic formula (im not typing that out lol)...}
+  r &= -8 \pm 8i\sqrt{2} 
+  \intertext{Such that $\alpha = -8$ and $\beta = 8\sqrt{2}$}
+  u &= e^{-8t} (c_1 \cos 8\sqrt{2}t + c_2 \sin 8\sqrt{2}t)
+  \intertext{Given that $u(0) = \frac{1}{2}$}
+  \frac{1}{2} &= c_1 \cos 0 + c_2 \sin 0 = c_1 \implies c_1 = \frac{1}{2}
+  \intertext{Given that $u'(0) = 0$}
+  u' &= -8 e^{-8t} ( \frac{1}{2} \cos (3 \sqrt{2} t ) + c_2 \sin (8 \sqrt{2} t)) + e^{-8t} (-4 \sqrt{2} \sin (8 \sqrt{2} t ) + 8 \sqrt{2} c_2 \cos (8 \sqrt{2} t)) \\
+  0 &= -8 (\frac{1}{2}) + 8 \sqrt{2} c_2 \implies 4 = 8\sqrt{2} c_2 \implies c_2 = \frac{\sqrt{2}}{4}
+  \intertext{Therefore the general solution is}
+  \Aboxed{u &= e^{-8t} \left( \frac{1}{2} \cos (8 \sqrt{2} t ) + \frac{\sqrt{2}}{4} \sin (8 \sqrt{2} t) \right)}
+\end{align*}
+
+\subsection*{6.1}
+
+\dfn{Laplace Transform}{
+  Let $\mathrm{f}$ be a function defined for $t \geq 0$. Then the integral
+  $$ L\{\mathrm{f}(\mathrm{t})\}=\int_0^{\infty} e^{-s t} f(t) d t $$
+  is said to be the Laplace Transform of $\mathrm{f}$, provided that the integral converges.
+}
+
+\qs{}{
+  Evaluate $L\{1\}$
+}
+\sol 
+\begin{align*}
+  \int_0^{\infty} e^{-st} (1) dt &= \lim_{b \to \infty} \int_0^b e^{-st} dt \\
+  &= \lim_{b \to \infty} \left[ \frac{e^{-st}}{-s} \right]_0^b = \boxed{\frac{1}{s}}
+\end{align*}
+
+\qs{}{
+  Evaluate $L\{t\}$
+}
+\sol
+\begin{align*}
+  \int_0^{\infty} e^{-st} (t) dt &= \lim_{b \to \infty} \int_0^b te^{-st} dt \\
+  \intertext{Using integration by parts, let $u = t$ and $dv = e^{-st} dt$ such that $du = dt$ and $v = \frac{e^{-st}}{-s}$}
+  &= -\frac{t}{se^{st}} + \frac{1}{s} \int_0^b e^{-st} dt \\
+  &= \lim_{b \to \infty} \left[-\frac{t}{se^{st}} - \frac{1}{s^2} e^{-st} \right]_0^b \\
+  &= 0 - 0 - (0 - \frac{1}{s^2}) = \boxed{\frac{1}{s^2}}
+\end{align*}
+
+\qs{}{
+  Evaluate $L\{e^{-3t}\}$
+}
+\sol
+\begin{align*}
+  \int_0^{\infty} e^{-(s+3)t} dt &= -\frac{1}{(s+3)e^{(s+3)t}} \Big|_0^{\infty} \\
+  &= 0 + \frac{1}{(s+3)} = \boxed{\frac{1}{s+3}}
+\end{align*}
+
+\thm{}{
+  Given $L\{e^{at}\}$ such that $s > 0$, we have that
+  $$L\{e^{at}\} = \frac{1}{s-a}$$
+}
+
+\qs{}{
+  Evaluate $\mathrm{L}\{\sin 2 \mathrm{t}\}$
+}
+\sol Skipping the work (integration by parts), we have that $\boxed{\frac{2}{s^2 + 4}}$.
+
+\thm{}{
+  Given $L\{\sin \mathrm{bt}\}$ such that $s > 0$, we have that
+  $$L\{\sin \mathrm{bt}\} = \frac{b}{s^2 + b^2}$$
+}
+
+\dfn{Laplace Transform is a Linear Operator}{
+  Given generic functions $f(t)$ and $g(t)$ and constants $a$ and $b$, we have that
+  $$L\{a f(t)+b g(t)\}=a L\{f(t)\}+b L\{g(t)\}$$
+}
+
+\qs{}{
+  Use the Laplace transform formulas to find the following Laplace transforms: \\
+  a) $L\{1+5 t\}$ \\
+  b) $\mathrm{L}\left\{4 e^{5 t}-10 \sin 2 t\right\}$
+}
+\sol
+a) $L\{1+5t\} = L\{1\} + 5L\{t\} = \boxed{\frac{1}{s} + \frac{5}{s^2}}$
+\double
+b) $L\{4e^{5t} - 10 \sin 2t\} = 4L\{e^{5t}\} - 10L\{\sin 2t\} = 4 \left(\frac{1}{s-5}\right) - 10 \left(\frac{2}{s^2 + 4}\right) = \boxed{\frac{4}{s-5} - \frac{20}{s^2 + 4}}$
+
+\qs{}{
+  Use the definition of the Laplace transform to find $L\{f(t)\}$ where
+$$
+f(t)=\left\{\begin{array}{lr}
+0, & 0 \leq t<3 \\
+2, & t \geq 3
+\end{array}\right.
+$$}
+\sol
+\begin{align*}
+  \int_0^{\infty} e^{-st} f(t) dt &= \int_0^3 e^{-st} (0) dt + \int_3^{\infty} e^{-st} (2) dt \\
+  &= 0 + - \frac{2}{s} e^{-st} \Big|_3^{\infty} = 0 + \frac{2}{s} e^{-3s} = \boxed{\frac{2}{s} e^{-3s}}
+\end{align*}
+
+\dfn{Laplace Transform of Derivative(s)}{
+  Given $L\{f(t)\} = F(s)$, we have that
+  $$L\{f^{\prime}(t)\} = sF(s) - f(0)$$
+  $$L\{f^{\prime \prime}(t)\} = s^2 F(s) - sf(0) - f^{\prime}(0)$$
+}
+
+\subsection*{6.2}
+
+\dfn{}{
+  If $\mathrm{L}\{\mathrm{f}(\mathrm{t})\}=\mathrm{F}(\mathrm{s})$, then
+  $$\mathrm{L}\left\{e^{a t} f(t)\right\}=\mathrm{F}(\mathrm{s}-\mathrm{a})$$
+}
+
+\qs{}{
+  Evaluate \\
+  a) $\mathrm{L}\left\{e^{5 t} t^3\right\}$ \\
+  b) $\mathrm{L}\left\{e^{-2 t} \cos 4 t\right\}$
+}
+\sol \\
+a) 
+\begin{align*}
+  L\{t^3\} &= \frac{3!}{s^{3+1}} = \frac{6}{s^4} \\
+  &\implies \boxed{\frac{6}{(s-5)^4}}
+\end{align*}
+\noindent
+b)
+\begin{align*}
+  L\{\cos 4t\} &= \frac{s}{s^2 + 16} \\
+  &\implies \boxed{\frac{s+2}{(s+2)^2 + 16}}
+\end{align*}
+
+\dfn{Inverse Laplace Transform}{
+  If $\mathrm{F}(\mathrm{s})$ represents the Laplace Transform of $f(t)$,
+  we say $f(t)$ is the inverse Laplace Transform of $F(s)$ and we write
+  $$f(t)=L^{-1}\{F(s)\}$$
+}
+
+\qs{}{
+  Evaluate a) $L^{-1}\left\{\frac{1}{s^5}\right\}$ \\
+  b) $L^{-1}\left\{\frac{1}{s^2+7}\right\}$
+}
+\sol \\
+a) We know that $L\{t^n\} = \dfrac{n!}{s^{n+1}}$
+such that we can rewrite $\dfrac{1}{4!} \cdot L\{\dfrac{4!}{s^{4+1}}\}$,
+therefore $L^{-1}\{\dfrac{1}{s^5}\} = \boxed{\dfrac{t^4}{24}}$
+\double
+b) We know that $L\{ \sin bt \} = \dfrac{b}{s^2 + b^2}$,
+such that we can rewrite $\dfrac{1}{\sqrt{7}} \cdot L\{ \dfrac{\sqrt{7}}{s^2 + 7} \}$,
+therefore $L^{-1}\{ \dfrac{1}{s^2 + 7} \} = \boxed{\dfrac{1}{\sqrt{7}} \sin \sqrt{7}t}$
+
+\dfn{Inverse Laplace Transform is a Linear Operator}{
+  Given $F(s)$ and $G(s)$, with constants $a$ and $b$, we have that
+  $$\mathrm{L}^{-1}\{\mathrm{aF}(\mathrm{s})+\mathrm{bG}(\mathrm{s})\}=\mathrm{af}(\mathrm{t})+\mathrm{bg}(\mathrm{t})$$
+}
+
+\qs{}{
+  Evaluate \\
+  a) $$\mathrm{L}^{-1}\left\{\frac{-2 s+6}{s^2+4}\right\}$$
+  b) $$\mathrm{L}^{-1}\left\{\frac{s^2+6 s+9}{(s-1)(s-2)(s+4)}\right\}$$
+}
+\sol a) We have both $s$ and $b$ in the numerator such that we can rewrite the expression as
+\begin{align*}
+  L^{-1}\left\{\frac{-2s+6}{s^2+4}\right\} &= -2L^{-1}\left\{\frac{s}{s^2+4}\right\} + 6L^{-1}\left\{\frac{1}{s^2+4}\right\} \\
+  &=  \boxed{-2\cos(2t) + 3\sin(2t)}
+\end{align*}
+\double
+b)
+  $$
+  \dfrac{s^2+6s+9}{(s-1)(s-2)(s+4)} = \frac{A}{s-1} + \frac{B}{s-2} + \frac{C}{s+4} 
+  $$
+Using the coverup method...
+$$
+  A = \frac{1^2+6(1)+9}{(1-2)(1+4)} = -\frac{16}{5}, \quad B = \frac{25}{6} \quad C = \frac{1}{30}
+$$
+We get
+$$ -\frac{16}{5} L^{-1}\{ \frac{1}{s-1} \} + \frac{25}{6} L^{-1}\{ \frac{1}{s-2} \} + \frac{1}{30} L^{-1}\{ \frac{1}{s+4} \} = \boxed{-\frac{16}{5} e^t + \frac{25}{6} e^{2t} + \frac{1}{30} e^{-4t}} $$
+
+\qs{}{
+  Evaluate
+  $$L^{-1}\left\{\frac{2 s+5}{(s-3)^2}\right\}$$
+}
+\sol We know that $L\{t^n e^{at}\} = \dfrac{n!}{s^{n+1}}$ such that we can rewrite the expression via partial fractions.
+\begin{align*}
+  \dfrac{2s+5}{(s-3)^2} &= \dfrac{A}{s-3} + \dfrac{B}{(s-3)^2} \\
+  2s+5 &= A(s-3) + B
+  \implies A = 2, \quad B = 11
+\end{align*}
+Such that
+$$ 2L^{-1}\left\{\frac{1}{s-3}\right\} + 11L^{-1}\left\{\frac{1}{(s-3)^2}\right\} = \boxed{2e^{3t} + 11te^{3t}} $$
+
+\thm{}{
+  $$\mathrm{L}^{-1}\left\{\frac{A(s-a)+B b}{(s-a)^2+b^2}\right\}=\mathrm{e}^{\mathrm{at}}(\mathrm{A} \cos (\mathrm{bt})+\mathrm{B} \sin (\mathrm{bt}))$$
+}
+
+\qs{}{
+  Evaluate
+  $$L^{-1}\left\{\frac{s / 2+5 / 3}{s^2+4 s+6}\right\}$$
+}
+\sol Notice that we can't factor the denominator, such that we must complete the square.
+$$ L^{-1}\left\{\frac{s / 2+5 / 3}{s^2+4 s+6}\right\} = L^{-1}\left\{\frac{s/2 + 5/3}{(s+2)^2 + 2}\right\} $$
+Such that $a = -2$ and $b = \sqrt{2}$. where we can orient the expression to fit the form of the theorem.
+$$ L^{-1}\left\{\frac{\frac{1}{2}(s+2) + 2/3}{(s+2)^2 + 2}\right\}$$
+We know that $B = \frac{\sqrt{2}}{3}$ and $A = \frac{1}{2}$ such that
+$$ \boxed{e^{-2t}\left(\frac{1}{2} \cos (\sqrt{2}t) + \frac{\sqrt{2}}{3} \sin (\sqrt{2}t)\right)} $$
+
+\qs{}{
+  Use Laplace transforms to solve the initial-value problem
+  $$\frac{d y}{d t}+3 y=13 \sin 2 t, \quad \mathrm{y}(0)=6$$
+}
+\sol
+\begin{align*}
+  L\{\frac{dy}{dt}\} + 3L\{y\} &= 13 L\{\sin 2t\} \\
+  sY(s) - y(0) + 3 Y(s) &= 13 \left(\frac{2}{s^2 + 4}\right) \\
+  sY(s) - 6 + 3Y(s) &= \frac{26}{s^2 + 4} \\
+  (s+3)Y(s) &= 6 + \frac{26}{s^2 + 4} \\
+  Y(s) &= \frac{6}{s+3} + \frac{26}{(s+3)(s^2 + 4)} \\
+  &= \frac{6(s^2+4)+26}{(s+3)(s^2 +4)} \\
+  Y(s) &= \frac{6s^2+50}{(s+3)(s^2+4)}
+\end{align*}
+Using partial fractions, we get
+\begin{align*}
+  \dfrac{6s^2+50}{(s+3)(s^2+4)} &= \frac{A}{(s+3)} + \frac{Bs+C}{s^2+4} \\
+  6s^2 + 50 &= A(s^2+4) + (Bs+C)(s+3) \\
+  6s^2 + 50 &= As^2 + 4A + Bs^2 + 3Bs + Cs + 3C
+\end{align*}
+Equating coefficients we get $A = 8$, $B = -2$, and $C = 6$, therefore
+\begin{align*}
+  y(t) &= L^{-1} \left\{ \frac{8}{s+3} + \frac{-2s+6}{s^2+4} \right\}
+  \intertext{Refering to question 2.39.a}
+  &= \boxed{8e^{-3t} - 2\cos 2t + 3\sin 2t}
+\end{align*}
+
+\qs{}{
+  Use Laplace transforms to solve the initial-value problem
+  $$y^{\prime \prime}-3 y^{\prime}+2 y=e^{-4 t}, \quad \mathrm{y}(0)=1, \quad \mathrm{y}^{\prime}(0)=5$$
+}
+\sol 
+\begin{align*}
+  L\{ y'' \} - 3L\{ y' \} + 2L\{ y \} &= L\{ e^{-4t} \} \\
+  s^2 Y(s) -s y(0) - y'(0) - 3(sY(s) - y(0)) + 2Y(s) &= \frac{1}{s+4} \\
+  s^2 Y(s) -s -2 - 3sY(s) + 2Y(s) &= \frac{1}{s+4} \\
+  (s^2-3s+2) Y(s) &= s + 2 + \frac{1}{s+4}
+\end{align*}
+Notice that $s^2-3s+2$ is our auxiliary polynomial
+\begin{align*}
+  Y(s) &= \dfrac{s+2}{(s-1)(s-2)} + \dfrac{1}{(s+4)(s-1)(s-2)} \\
+  &= \frac{s^2 + 6s + 9}{(s-1)(s-2)(s+4)}
+  \intertext{Refering to question 2.39.b}
+  \Aboxed{y(t) &= -\frac{16}{5} e^t + \frac{25}{6} e^{2t} + \frac{1}{30} e^{-4t}}
+\end{align*}
+
+\qs{}{
+  Use Laplace transforms to solve the initial-value problem
+  $$y^{\prime \prime}-6 y^{\prime}+9 y=t^2 e^{3 t}, \quad \mathrm{y}(0)=2, \quad \mathrm{y}^{\prime}(0)=17$$
+}
+\sol
+\begin{align*}
+  L\{y''\} - 6L\{y'\} + 9L\{y\} &= L\{t^2 e^{3t}\} \\
+  s^2 Y(s) - s y(0) - y'(0) - 6(sY(s) - y(0)) + 9Y(s) &= \frac{2}{(s-3)^3} \\
+  s^2 Y(s) - 2s - 17 - 6s Y(s) + 12 + 9 Y(s) &= \frac{2}{(s-3)^3} \\
+  Y(s)(s^2 - 6s + 9) &= 2s + 5 + \frac{2}{(s-3)^3}
+\end{align*}
+\begin{align*}
+  Y(s) &= \underbrace{\frac{2s+5}{(s-3)^2}}_{\text{Performing PFD}} + \frac{2}{(s-3)^5} \\
+  &= \frac{2}{s-3} + \frac{11}{(s-3)^2} + \frac{2}{(s-3)^5} \\
+  y(t) &= 2 L^{-1}\left\{\frac{1}{s-3}\right\} + 11 L^{-1}\left\{\frac{1}{(s-3)^2}\right\} + 2 L^{-1}\left\{\frac{1}{(s-3)^5}\right\} \\
+  \Aboxed{y(t) &= 2 e^{3t} + 11te^{3t} + \frac{1}{12} t^4 e^{3t}}
+\end{align*}
+
+\qs{}{
+  Use Laplace transforms to solve the initial-value problem
+  $$y^{\prime \prime}+4 y^{\prime}+6 y=1+e^{-t}, \quad \mathrm{y}(0)=0, \quad \mathrm{y}^{\prime}(0)=0$$
+}
+\sol
+\begin{align*}
+  L \{ y'' \} + 4L\{y'\} + 6L\{y\} &= L\{1\} + L\{e^{-t}\} \\
+  s^2 Y(s) - sy(0) - y'(0) + 4\left(sY(s) - y(0)\right) + 6Y(s) &= \frac{1}{s} + \frac{1}{s+1} \\
+  Y(s) (s^2 + 4s + 6) &= \frac{1}{s} + \frac{1}{s+1} \\
+  Y(s) (s^2 + 4s + 6) &= \frac{2s+1}{s(s+1)}
+\end{align*}
+$$ y = L^{-1}\left\{\frac{2s+1}{s(s+1)(s^2+4s+6)}\right\} $$
+Using partial fractions,
+\begin{align*}
+  \frac{2s+1}{s (s+1) (s^2+4s+6)} &= \frac{A}{s} + \frac{B}{s+1} + \frac{Cs+D}{s^2+4s+6} \\
+  2s+1 &= A(s+1)(s^2+4s+6) + B(s)(s^2+4s+6) + (Cs+D)(s)(s+1) \\
+  2s+1 &= As^3 + 5 As^2 + 10 As + 6A + Bs^3 + 4Bs^2 + 6Bs + Cs^3 + Cs^2 + Ds^2 + Ds \\
+  s^3 &: A + B + C = 0 \\
+  s^2 &: 5A + 4B + C + D = 0 \\
+  s &: 10A + 6B + D = 2 \\
+  \# &: 6A = 1
+\end{align*}
+RREF a matrix, we get
+$$A = \frac{1}{6}, \quad B = \frac{1}{3}, \quad C = -\frac{1}{2}, \quad D = -\frac{5}{3}$$
+\begin{align*}
+  y &= \frac{1}{6} L^{-1}\left\{\frac{1}{s}\right\} + \frac{1}{3} L^{-1}\left\{\frac{1}{s+1}\right\} - L^{-1} \left\{\frac{\frac{1}{2}s + \frac{5}{3}}{s^2+4s+6}\right\} \\
+  &= \frac{1}{6} + \frac{1}{3} e^{-t} - \underbrace{L^{-1} \left\{\frac{\frac{1}{2}s + \frac{5}{3}}{s^2+4s+6}\right\}}_{\text{Refering to qs 2.41}} \\
+  y &= \frac{1}{6} + \frac{1}{3} e^{-t} - \left( \frac{1}{2} e^{-2t} \cos (\sqrt{2}t) + \frac{\sqrt{2}}{3} e^{-2t} \sin(\sqrt{2}t) \right) \\
+  \Aboxed{y &= \frac{1}{6} + \frac{1}{3} e^{-t} - \frac{1}{2} e^{-2t} \cos (\sqrt{2}t) - \frac{\sqrt{2}}{3} e^{-2t} \sin(\sqrt{2}t)}
+\end{align*}
+
+\dfn{Laplace of Higher Derivatives}{
+  Given $L\{f(t)\} = F(s)$, we have that
+  $$L\{f^{(3)}(t)\} = s^3 F(s) - s^2 f(0) - sf'(0) - f''(0)$$
+  $$L\{f^{(4)}(t)\} = s^4 F(s) - s^3 f(0) - s^2 f'(0) - sf''(0) - f'''(0)$$
+}
+
+\subsection*{6.3 \& 6.4}
+
+\dfn{Unit Step Function}{
+  To deal effectively with functions having jump discontinuities (binary states),
+  $$\mathrm{u}_{\mathrm{a}}(\mathrm{t})=\left\{\begin{array}{l}0,0 \leq t<a \\ 1, t \geq a\end{array}\right.$$
+}
+
+\dfn{Rewriting a Piecewise Funciton as a Unit Step Function}{
+  The piecewise-defined function $f(t)=\left\{\begin{array}{ll}g(t), & t<a \\ h(t), & t \geq a\end{array}\right.$
+  can be rewritten using unit step functions as
+  $$f(t)=g(t)-g(t) u_a(t)+h(t) u_a(t)$$
+  
+  A function of the type $f(t)=\left\{\begin{array}{cc}0, & t<a \\ g(t), & a \leq t<b \\ 0, & t \geq b\end{array} \quad\right.$
+  can be written in terms of unit step functions as
+  $$f(t)=g(t)\left[u_a(t)-u_b(t)\right]$$
+}
+
+\qs{}{
+  Express $f(t)=\left\{\begin{array}{cc}20 t, & t<5 \\ 0, & t \geq 5\end{array}\right.$ in terms of unit step functions.
+}
+\sol Given that $g(t) = 20t$ and $h(t) = 0$,
+\begin{align*}
+  f(t) &= 20t - 20t u_5(t) \\
+  &= \boxed{20t - 20t u_5(t)}
+\end{align*}
+
+\dfn{Shifted Unit Step Function}{
+  Written as a piecewise-defined function,
+$$
+\mathrm{f}(\mathrm{t}-\mathrm{a}) \mathrm{u}_{\mathrm{a}}(\mathrm{t})=\left\{\begin{array}{r}
+0,0 \leq t<a \\
+f(t-a), t \geq a
+\end{array}\right.
+$$
+}
+\thm{Laplace Transform of a Unit Step Function}{
+  $$\mathrm{L}\left\{\mathrm{u}_{\mathrm{a}}(\mathrm{t})\right\}=\frac{e^{-a s}}{s}$$
+}
+\thm{Laplace Transform of a Shifted Unit Step Function}{
+  $$\mathrm{L}\left\{\mathrm{f}(\mathrm{t}-\mathrm{a}) \mathrm{u}_{\mathrm{a}}(\mathrm{t})\right\}=e^{-a s} F(s)$$
+}
+
+\qs{}{
+  Find the Laplace transform of
+  $$\mathrm{f}(\mathrm{t})=2-3 \mathrm{u}_2(\mathrm{t})+\mathrm{u}_3(\mathrm{t})$$
+}
+\sol
+\begin{align*}
+  L \{f(t)\} &= L\{2\} - 3L\{u_2(t)\} + L\{u_3(t)\} \\
+  &= \boxed{[]\frac{2}{s} - \frac{3e^{-2s}}{s} + \frac{e^{-3s}}{s}}
+\end{align*}
+
+\thm{Laplace Transform (Sit. Trig)}{
+  $$\mathrm{L}\left\{\mathrm{g}(\mathrm{t}) \mathrm{u}_{\mathrm{a}}(\mathrm{t})\right\}=e^{-a s} \mathrm{~L}\{g(t+a)\}$$
+}
+
+\qs{}{
+  Evaluate $$\mathrm{L}\left\{\cos (\mathrm{t}) u_\pi(t)\right\}$$
+}
+\sol Referring to thm 2.9,
+\begin{align*}
+  \mathrm{L}\left\{\cos (\mathrm{t}) u_\pi(t)\right\} &= e^{-as} L \left\{ \cos (t+\pi) \right\} \\
+  &= e^{-\pi s} L \left\{ \cos t \cos \pi - \sin t \sin \pi \right\} \\
+  &= e^{-\pi s} L \left\{ -\cos t \right\} \\
+  &= -e^{-\pi s} \left(\frac{s}{s^2+1}\right) \\
+  &= \boxed{-\frac{s e^{-\pi s}}{s^2+1}}
+\end{align*}
+
+\qs{}{
+  Evaluate
+  $$\mathrm{L}^{-1}\left\{\frac{e^{-2 s}}{s-4}\right\}$$
+}
+\sol
+\begin{align*}
+  & \mathrm{L}^{-1}\left\{e^{-2 s} \cdot \underbrace{\frac{1}{s-4}}_{e^{4t}}\right\}
+  \intertext{Referring to thm 2.9}
+  &= \boxed{e^{4(t-2) u_2(t)}}
+\end{align*}
+
+\qs{}{
+  Evaluate
+  $$\mathrm{L}^{-1}\left\{\frac{e^{-\pi s / 2} s}{s^2+9}\right\}$$
+}
+\begin{align*}
+  & \mathrm{L}^{-1}\left\{e^{-\pi s / 2} \cdot \underbrace{\frac{s}{s^2+9}}_{\cos (3t)} \right\} \\
+  &= \boxed{\cos 3 (t- \frac{\pi}{2}) u_{\frac{\pi}{2}}(t)}
+\end{align*}
+
+\qs{}{
+  Solve $y^{\prime}+y=f(t),\quad y(0)=5$, where $f(t)=\left\{\begin{array}{cc}0 . & t<\pi \\ 3 \cos t, & t \geq \pi\end{array}\right.$
+}
+
+\begin{align*}
+  y' + y &= \left\{\begin{array}{cc}0 . & t<\pi \\ 3 \cos t, & t \geq \pi\end{array}\right. \\
+  &= 3 \cos t u_{\pi}(t) \\
+  L\{y'\} + L\{y\} &= \underbrace{3L\{\cos t u_{\pi}(t)\}}_{\text{Solved in qs 2.48}} \\
+  sY(s) - y(0) + Y(s) &= -\frac{se^{-\pi s}}{s^2 + 1} \\
+  Y(s) (s+1)& = 5 - 3\frac{se^{-\pi s}}{s^2 + 1} \\
+  Y(s) &= \frac{5}{s+1} - 3 e^{-\pi s} \cdot \frac{s}{(s+1)(s^2 + 1)}
+\end{align*}
+We need to break down the last term using partial fractions.
+\begin{align*}
+  \frac{s}{(s+1)(s^2 + 1)} &= \frac{A}{s+1} + \frac{Bs+C}{s^2+1} \\
+  s &= A(s^2+1) + (Bs+C)(s+1) \\
+  s &= As^2 + A + Bs^2 + Bs + Cs + C \\
+  \implies & A = -\frac{1}{2}, \quad B = \frac{1}{2}, \quad C = \frac{1}{2}
+\end{align*}
+Such that,
+\begin{align*}
+  y &= 5 L^{-1} \left\{\frac{1}{s+1}\right\} - 3 L^{-1} \left\{ e^{-\pi s} \left(\frac{-\frac{1}{2}}{(s+1)} + \frac{\frac{1}{2}s + \frac{1}{2}}{s^2+1} \right) \right\} \\
+  &= 5 L^{-1} \left\{\frac{1}{s+1}\right\} + \frac{3}{2} L^{-1} \left\{ e^{-\pi s} \left(\frac{1}{(s+1)} - \frac{s + 1}{s^2+1} \right) \right\} \\
+  &= 5 e^{-t} + \frac{3}{2} L^{-1} \left\{ e^{-\pi s} \left( \underbrace{\frac{1}{s+1}}_{e^{-t}} - \underbrace{\frac{s}{s^2+1}}_{\cos t} - \underbrace{\frac{1}{s^2 +1}}_{\sin t} \right) \right\} \\
+  \Aboxed{y &= 5 e^{-t} + \frac{3}{2} \left( e^{-(t-\pi)} - \cos(t-\pi) - \sin(t-\pi) \right) u_{\pi} (t)}
+\end{align*}
+
+\thm{Laplace Periodic Function}{
+  If $f(t)$ is a periodic function of period $T$, then
+$$ \mathrm{L}\{\mathrm{f}(\mathrm{t})\}=\frac{1}{1-e^{-s T}} \int_0^T e^{-s t} f(t) d t . $$
+}
+
+\subsection*{6.5}
+\dfn{Shifted Dirac Delta Function}{
+  The shifted Dirac delta function is defined as
+  $$\delta(t-a)=\left\{\begin{array}{ll}0, & t \neq a \\ \infty, & t=a\end{array}\right.$$
+  such that
+  $$\int_{-\infty}^{\infty} f(t) \delta(t-a) d t=f(a)$$
+}
+\thm{Laplace Transform of Dirac Delta Function}{
+  $$\mathrm{L}\{\delta(t-a)\}=e^{-a s}$$
+}
+
+\qs{}{
+  Solve $y^{\prime \prime}+y=4 \delta(t-2 \pi)$, where $y(0)=1, \quad y^{\prime}(0)=0$
+}
+\sol
+\begin{gather*}
+  L\{y''\} + L\{y\} = 4L\{\delta(t-2\pi)\} \\
+  s^2 Y(s) - \underbrace{sy(0)}_{s} - \underbrace{y'(0)}_{0} + Y(s) = 4e^{-2\pi s} \\
+  Y(s)(s^2 + 1) = s + 4e^{-2\pi s} \\
+  Y(s) = \frac{s}{s^2 + 1} + 4e^{-2\pi s} \cdot \frac{1}{s^2 + 1} \\
+  y(t) = L^{-1}\left\{\frac{s}{s^2 + 1}\right\} + 4L^{-1}\left\{e^{-2\pi s} \cdot \underbrace{\frac{1}{s^2 + 1}}_{\sin t}\right\} \\
+  \boxed{y(t) = \cos t + 4 \sin (t - 2\pi) u_{2\pi}(t)}
+  \intertext{We can rewrite this as a piecewise function,}
+  \boxed{y(t) = \left\{\begin{array}{cc}\cos t, & t<2\pi \\ \cos t + 4 \sin t, & t \geq 2\pi\end{array}\right.}
+\end{gather*}
+If we were to change the initial conditions to $y(0) = 0$ and $y'(0) = 0$, we would get
+$$ y = 4 \sin (t - 2\pi) u_{2\pi}(t) $$
 
 \end{document}
